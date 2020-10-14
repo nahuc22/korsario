@@ -1,6 +1,6 @@
-<h4>Crear persona</h4>
-<hr>
-<form>
+<h4> {{ accion }} Persona</h4>
+
+<form [formGroup]="persona" (ngSubmit)="guardarPersona()">
 
   <div>
 
@@ -10,9 +10,13 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Nombre">
-      </div>
+               placeholder="Nombre"
+               formControlName="nombre">
+               <span class="text-danger ml-3" *ngIf="persona.get('nombre').hasError('required') && persona.get('nombre').touched">
+                 El nombre es obligatorio</span>
+      </div> 
     </div>
+    
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
@@ -20,19 +24,25 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Apellido">
+               placeholder="Apellido"
+               formControlName="apellido">
+               <span class="text-danger ml-3" *ngIf="persona.get('apellido').hasError('required') && persona.get('apellido').touched">
+                 El apellido es obligatorio</span>
       </div>
     </div>
 
   </div>
 
   <div class="form-group row">
-    <label class="col-2 col-form-label">Correo</label>
+    <label class="col-2 col-form-label">Dni</label>
     <div class="col-md-8">
 
       <input class="form-control"
-             type="email"
-             placeholder="Correo electrónico">
+             type="text"
+             placeholder="Dni"
+             formControlName="dni">
+             <span class="text-danger ml-3" *ngIf="persona.get('dni').hasError('required') && persona.get('dni').touched">
+               Debe contener 8 dígitos</span>
     </div>
   </div>
 
@@ -41,7 +51,7 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary">
+      <button type="submit" class="btn btn-outline-primary" [disabled] ="persona.invalid">
         Guardar
       </button>
     </div>
