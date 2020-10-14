@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "korsario"
+    }
+  },
+  "defaultProject": "korsario",
+  "cli": {
+    "analytics": false
+  }
 }
