@@ -4,6 +4,7 @@ import { NuevaEditarPersonaComponent } from './models/nueva-editar-persona/nueva
 import { VerPersonaComponent } from './models/ver-persona/ver-persona.component';
 import { ListPersonaComponent } from './models/list-persona/list-persona.component';
 
+
 const routes: Routes = [
 
   {path: 'agregar', component: NuevaEditarPersonaComponent},

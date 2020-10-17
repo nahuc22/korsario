@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Persona } from 'src/app/pages/Persona';
+import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
   selector: 'app-ver-persona',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerPersonaComponent implements OnInit {
 
-  constructor() { }
+  listaPersonas: Persona[];
 
-  ngOnInit(): void {
+  loading = false;
+
+  constructor(private personaServicio: PersonaService) { 
   }
 
+  ngOnInit(): void {
+    this.cargarPersona();
+  }
+
+  cargarPersona(){
+    this.personaServicio.getListPersonas().subscribe(data => {
+      this.listaPersonas = data;
+    }
+  }
+  
+  
+ 
 }
